@@ -41,8 +41,12 @@ async function HandleSubmit(e) {
     // console.log("returned message", returnedMessage);
     return;
   } catch (err) {
-    console.log(err);
-    alert("an error occured please tyr again");
+    console.log(err, err.message, err.response);
+    if (err.response.data.msg === "user already exit") {
+      alert("user email already registered");
+    } else {
+      alert("an error occured please tyr again");
+    }
   }
 }
 
